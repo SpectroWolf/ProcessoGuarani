@@ -25,9 +25,13 @@ O aplicativo deve ter como target SDK o SDk mais recente;
 O aplicativo deve fazer uso das boas práticas de programação android;
 
 Atenção:
+
 Utilize ViewPager e TabLayout
+
 Utilize o Material Design
+
 Utilize NavigaƟon Drawer
-Utilize o Modelo MVP.
+
+Utilize o Modelo MVP
 
 Alguns ajustes foram realizados, foi utilizado arquitetura MVVM + Clean Architecture para o projeto, visando uma arquitetura mais robusta e atual. O BD que foi disponibilizado, foram necessários alguns ajustes, como remoção de colunas não utilizadas para simplificar as consultas.
