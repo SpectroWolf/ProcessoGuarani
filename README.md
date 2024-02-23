@@ -5,7 +5,7 @@ Funcionais:
 O aplicativo deve ser capaz de buscar/cadastrar/atualizar/deletar um cliente;
 O aplicaƟvo deve ser capaz de buscar clientes pela razão social, nome fantasia e CNPJ;
 A listagem deve ter uma versão simples em Smartphone e uma versão com detalhes ao lado para Tablet;
-Um cliente pode ser pessoa jurídica ou İsica. Se for pessoa Física, deve ter CPF, nome (utilizar campo Razão Social), e-mail principal, e-mail secundário, vários endereços (mínimo de 1). Se for pessoa Jurídica, deve trocar o CPF por CNPJ e adicionar o campo de nome fantasia.
+Um cliente pode ser pessoa jurídica ou física. Se for pessoa Física, deve ter CPF, nome (utilizar campo Razão Social), e-mail principal, e-mail secundário, vários endereços (mínimo de 1). Se for pessoa Jurídica, deve trocar o CPF por CNPJ e adicionar o campo de nome fantasia.
 O aplicaƟvo deve ser capaz de buscar todos os produtos separados pelo seu status:
 
  NORMAL
