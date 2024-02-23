@@ -4,4 +4,5 @@
     <string name="client_fragment_title_text">Clientes</string>
     <string name="product_fragment_title_text">Produtos</string>
     <string name="fragment_client_FAB_label">Adicionar cliente</string>
+    <string name="search">Search</string>
 </resources>

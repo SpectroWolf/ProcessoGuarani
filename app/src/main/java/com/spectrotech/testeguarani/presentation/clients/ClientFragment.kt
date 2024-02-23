@@ -7,10 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.spectrotech.testeguarani.R
 import com.spectrotech.testeguarani.adapter.ClientListAdapter
@@ -21,6 +23,7 @@ import com.spectrotech.testeguarani.presentation.UIState
 import com.spectrotech.testeguarani.util.gone
 import com.spectrotech.testeguarani.util.visible
 import dagger.hilt.android.AndroidEntryPoint
+import java.util.Locale
 
 
 @AndroidEntryPoint
@@ -37,12 +40,9 @@ class ClientFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         initRecyclerView()
+        initSearch()
         getAllClients()
         initObservables()
-    }
-
-    private fun getAllClients() {
-        viewModel.getAllClients()
     }
 
     override fun onCreateView(
@@ -54,6 +54,56 @@ class ClientFragment : Fragment() {
 
         return binding.root
 
+    }
+
+    private fun initSearch() {
+
+        val searchView = binding.svClient
+        val searchList = ArrayList<Client>()
+
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                searchView.clearFocus()
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                searchList.clear()
+
+                val searchText = newText!!.toLowerCase(Locale.getDefault())
+
+                viewModel.clientList.observe(viewLifecycleOwner) { clientList ->
+
+                    if (searchText.isNotEmpty()) {
+
+                        clientList.forEach {
+                            if (it.CLI_RAZAOSOCIAL?.toLowerCase(Locale.getDefault())!!
+                                    .contains(searchText)
+                            ) {
+                                searchList.add(it)
+                            }
+                        }
+
+                        clientListAdapter.setList(searchList)
+                        clientListAdapter.notifyDataSetChanged()
+
+                    } else {
+
+                        searchList.clear()
+                        clientListAdapter.setList(clientList)
+                        clientListAdapter.notifyDataSetChanged()
+
+                    }
+                }
+
+                return true
+            }
+        }
+        )
+    }
+
+    private fun getAllClients() {
+        viewModel.getAllClients()
     }
 
     private fun initRecyclerView() {

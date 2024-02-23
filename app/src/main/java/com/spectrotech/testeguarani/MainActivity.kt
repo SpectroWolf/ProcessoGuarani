@@ -2,9 +2,10 @@ package com.spectrotech.testeguarani
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import androidx.appcompat.widget.SearchView
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.spectrotech.testeguarani.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
