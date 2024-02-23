@@ -8,18 +8,20 @@ A listagem deve ter uma versão simples em Smartphone e uma versão com detalhes
 Um cliente pode ser pessoa jurídica ou física. Se for pessoa Física, deve ter CPF, nome (utilizar campo Razão Social), e-mail principal, e-mail secundário, vários endereços (mínimo de 1). Se for pessoa Jurídica, deve trocar o CPF por CNPJ e adicionar o campo de nome fantasia.
 O aplicaƟvo deve ser capaz de buscar todos os produtos separados pelo seu status:
 
- NORMAL
- P. ESTOQUE
- LANÇAMENTO
- PROMOÇÃO
+NORMAL
+P. ESTOQUE
+LANÇAMENTO
+PROMOÇÃO
  
 O aplicativo deve exibir na listagem de produtos: descrição. código, estoque, preço máximo e preço mínimo).
 Ao pressionar um produto, deve exibir um dialog com todos os preços dele em ordem crescente.
 
 Não-funcionais:
 
-O aplicativo deve uƟlizar o banco SQLite. O modelo será passado com as tabelas;
+O aplicativo deve utilizar o banco SQLite. O modelo será passado com as tabelas;
+
 O aplicativo deve ter como target SDK o SDk mais recente;
+
 O aplicativo deve fazer uso das boas práticas de programação android;
 
 Atenção:
