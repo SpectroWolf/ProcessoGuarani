@@ -77,7 +77,9 @@ class ClientFragment : Fragment() {
                     if (searchText.isNotEmpty()) {
 
                         clientList.forEach {
-                            if (it.CLI_RAZAOSOCIAL?.toLowerCase(Locale.getDefault())!!
+                            if (it.CLI_RAZAOSOCIAL?.lowercase(Locale.getDefault())!!
+                                    .contains(searchText) || it.CLI_CGCCPF?.lowercase(Locale.getDefault())!!
+                                    .contains(searchText) || it.CLI_NOMEFANTASIA?.lowercase(Locale.getDefault())!!
                                     .contains(searchText)
                             ) {
                                 searchList.add(it)
