@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.spectrotech.testeguarani.R
 import com.spectrotech.testeguarani.adapter.ClientListAdapter
 import com.spectrotech.testeguarani.adapter.ProductListAdapter
@@ -56,7 +57,7 @@ class ProductFragment : Fragment() {
     }
 
     private fun getProductId(id: Long) {
-        val builder = AlertDialog.Builder(requireContext())
+        val builder = MaterialAlertDialogBuilder(requireContext())
             .setTitle("Listagem de Preços")
             .setMessage("Aqui vai ser exibido os preços em ordem crescente do produto $id")
             .setPositiveButton("Fechar", null)

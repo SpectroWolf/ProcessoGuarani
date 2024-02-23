@@ -11,7 +11,6 @@ data class Client(
     val CLI_CODIGOCLIENTE: Int,
     val CLI_RAZAOSOCIAL: String? = "",
     val CLI_CGCCPF: String? = "",
-    val CLI_INSCRESTADUAL: String? = "",
     val CLI_ENDERECO: String? = "",
     val CLI_NUMERO: String? = "",
     val CLI_COMPLEMENTO: String? = "",
