@@ -21,7 +21,7 @@
                 android:id="@+id/edt_razao_social"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Razão Social"
+                android:hint="@string/text_input_custom_dialog_razao_social"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -41,7 +41,7 @@
                 android:id="@+id/edt_cpf"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="CPF ou CNPJ"
+                android:hint="@string/text_input_custom_dialog_cpf_cnpj"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -61,7 +61,7 @@
                 android:id="@+id/edt_endereco"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Endereço"
+                android:hint="@string/text_input_custom_dialog_address"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -81,7 +81,7 @@
                 android:id="@+id/edt_num_endereco"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Nº do endereço"
+                android:hint="@string/text_input_custom_dialog_address_number"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -101,7 +101,7 @@
                 android:id="@+id/edt_complemento"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Complemento"
+                android:hint="@string/text_input_custom_dialog_address_additional_details"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -121,7 +121,7 @@
                 android:id="@+id/edt_bairro"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Bairro"
+                android:hint="@string/text_input_custom_dialog_address_neighborhood"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -141,7 +141,7 @@
                 android:id="@+id/edt_cod_municipio"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Código do Municipio"
+                android:hint="@string/text_input_custom_dialog_address_city_cod"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -161,7 +161,7 @@
                 android:id="@+id/edt_nome_fantasia"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Nome Fantasia"
+                android:hint="@string/text_input_custom_dialog_fantasy_name"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -181,7 +181,7 @@
                 android:id="@+id/edt_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Email"
+                android:hint="@string/text_input_custom_dialog_email"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -201,7 +201,7 @@
                 android:id="@+id/edt_email_secundario"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="E-mail secundário"
+                android:hint="@string/text_input_custom_dialog_email_secondary"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

@@ -25,7 +25,6 @@ import com.spectrotech.testeguarani.util.visible
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.Locale
 
-
 @AndroidEntryPoint
 class ClientFragment : Fragment() {
 
@@ -70,7 +69,7 @@ class ClientFragment : Fragment() {
             override fun onQueryTextChange(newText: String?): Boolean {
                 searchList.clear()
 
-                val searchText = newText!!.toLowerCase(Locale.getDefault())
+                val searchText = newText!!.lowercase(Locale.getDefault())
 
                 viewModel.clientList.observe(viewLifecycleOwner) { clientList ->
 
@@ -136,7 +135,7 @@ class ClientFragment : Fragment() {
         val edtEmail2: TextView = customDialogLayout.findViewById(R.id.edt_email_secundario)
 
         val addClientDialogBuilder = MaterialAlertDialogBuilder(requireContext())
-            .setTitle("Editando Cliente")
+            .setTitle(getString(R.string.client_fragment_upsert_client_dialog_title))
             .setView(customDialogLayout)
 
         edtRazaoSocial.text = client.CLI_RAZAOSOCIAL
@@ -150,8 +149,11 @@ class ClientFragment : Fragment() {
         edtEmail.text = client.CLI_EMAIL
         edtEmail2.text = client.CLI_EMAILSECUNDARIO
 
-        addClientDialogBuilder.setNegativeButton("Fechar", null)
-        addClientDialogBuilder.setPositiveButton("Editar") { _, _ ->
+        addClientDialogBuilder.setNegativeButton(
+            getString(R.string.client_fragment_upsert_dialog_negative_button_text),
+            null
+        )
+        addClientDialogBuilder.setPositiveButton(getString(R.string.client_fragment_upsert_dialog_positive_button_text)) { _, _ ->
 
             val editedClient = Client(
                 client.CLI_CODIGOCLIENTE,
@@ -198,11 +200,14 @@ class ClientFragment : Fragment() {
         val edtEmail2: TextView = customDialogLayout.findViewById(R.id.edt_email_secundario)
 
         val addClientDialogBuilder = MaterialAlertDialogBuilder(requireContext())
-            .setTitle("Adicionando um Cliente")
+            .setTitle(getString(R.string.client_fragment_add_client_dialog_title))
             .setView(customDialogLayout)
 
-        addClientDialogBuilder.setNegativeButton("Fechar", null)
-        addClientDialogBuilder.setPositiveButton("Adicionar") { _, _ ->
+        addClientDialogBuilder.setNegativeButton(
+            getString(R.string.client_fragment_upsert_dialog_negative_button_text),
+            null
+        )
+        addClientDialogBuilder.setPositiveButton(getString(R.string.client_fragment_add_dialog_positive_button_text)) { _, _ ->
 
             if (edtRazaoSocial.text.isNullOrEmpty() || edtCPFeCNPJ.text.isNullOrEmpty()
                 || edtEndereco.text.isNullOrEmpty() || edtNumEndereco.text.isNullOrEmpty()
@@ -211,7 +216,7 @@ class ClientFragment : Fragment() {
             ) {
                 Toast.makeText(
                     requireContext(),
-                    "Preencha todos os campos para continuar.",
+                    getString(R.string.client_fragment_add_client_toast_error_text),
                     Toast.LENGTH_SHORT
                 ).show()
             } else {
@@ -276,9 +281,12 @@ class ClientFragment : Fragment() {
     private fun updatedDB() {
 
         val builder = MaterialAlertDialogBuilder(requireContext())
-            .setTitle("Atualização")
-            .setMessage("O banco de dados foi atualizado!")
-            .setPositiveButton("Fechar", null)
+            .setTitle(getString(R.string.client_fragment_updatedb_dialog_title))
+            .setMessage(getString(R.string.client_fragment_updatedb_dialog_message))
+            .setPositiveButton(
+                getString(R.string.client_fragment_upsert_dialog_negative_button_text),
+                null
+            )
 
         val alertDialog = builder.create()
 

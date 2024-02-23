@@ -1,8 +1,30 @@
 <resources>
     <string name="app_name">TesteGuarani</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="client_fragment_title_text">Clientes</string>
+
     <string name="product_fragment_title_text">Produtos</string>
-    <string name="fragment_client_FAB_label">Adicionar cliente</string>
-    <string name="search">Search</string>
+
+
+    <!-- Custom Dialog-->
+    <string name="text_input_custom_dialog_razao_social">Razão Social</string>
+    <string name="text_input_custom_dialog_cpf_cnpj">CPF ou CNPJ</string>
+    <string name="text_input_custom_dialog_address">Endereço</string>
+    <string name="text_input_custom_dialog_address_number">Nº do endereço</string>
+    <string name="text_input_custom_dialog_address_additional_details">Complemento</string>
+    <string name="text_input_custom_dialog_address_neighborhood">Bairro</string>
+    <string name="text_input_custom_dialog_address_city_cod">Código do Municipio</string>
+    <string name="text_input_custom_dialog_fantasy_name">Nome Fantasia</string>
+    <string name="text_input_custom_dialog_email">Email</string>
+    <string name="text_input_custom_dialog_email_secondary">E-mail secundário</string>
+
+    <!-- Client Fragment-->
+    <string name="client_fragment_title_text">Clientes</string>
+    <string name="client_fragment_upsert_client_dialog_title">Editando Cliente</string>
+    <string name="client_fragment_upsert_dialog_negative_button_text">Fechar</string>
+    <string name="client_fragment_upsert_dialog_positive_button_text">Editar</string>
+    <string name="client_fragment_FAB_label">Adicionar cliente</string>
+    <string name="client_fragment_add_client_dialog_title">Adicionando um Cliente</string>
+    <string name="client_fragment_add_dialog_positive_button_text">Adicionar</string>
+    <string name="client_fragment_add_client_toast_error_text">Preencha todos os campos para continuar.</string>
+    <string name="client_fragment_updatedb_dialog_title">Atualização</string>
+    <string name="client_fragment_updatedb_dialog_message">O banco de dados foi atualizado!</string>
 </resources>
