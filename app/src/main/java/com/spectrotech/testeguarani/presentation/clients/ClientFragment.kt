@@ -5,11 +5,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.spectrotech.testeguarani.adapter.ClientListAdapter
 import com.spectrotech.testeguarani.databinding.FragmentClientBinding
 import com.spectrotech.testeguarani.data.model.Client
+import com.spectrotech.testeguarani.presentation.MainViewModel
+import com.spectrotech.testeguarani.presentation.UIState
+import com.spectrotech.testeguarani.util.gone
+import com.spectrotech.testeguarani.util.visible
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -21,11 +26,18 @@ class ClientFragment : Fragment() {
 
     private lateinit var clientListAdapter: ClientListAdapter
 
+    private val viewModel: MainViewModel by activityViewModels()
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         initRecyclerView()
-        setFakeList()
+        getAllClients()
+        initObservables()
+    }
+
+    private fun getAllClients() {
+        viewModel.getAllClients()
     }
 
     override fun onCreateView(
@@ -39,7 +51,7 @@ class ClientFragment : Fragment() {
 
     }
 
-    private fun initRecyclerView(){
+    private fun initRecyclerView() {
         binding.recyclerClientFragment.layoutManager = LinearLayoutManager(context)
         binding.recyclerClientFragment.setHasFixedSize(true)
         clientListAdapter = ClientListAdapter(::editClient, ::deleteClient)
@@ -50,56 +62,41 @@ class ClientFragment : Fragment() {
         binding.recyclerClientFragment.adapter = clientListAdapter
     }
 
-    private fun editClient(clientId: Long){}
+    private fun editClient(client: Client) {}
 
-    private fun deleteClient(clientId: Long){}
+    private fun deleteClient(client: Client) {
+        viewModel.deleteClient(client)
+    }
 
-    private fun setFakeList(){
+    private fun initObservables() {
+        viewModel.clientList.observe(viewLifecycleOwner) {
+            clientListAdapter.setList(it)
+            clientListAdapter.notifyDataSetChanged()
+        }
 
-        val clientList: MutableList<Client> = mutableListOf(
-            Client(
-                id = 1,
-                razaoSocial = "teste1",
-                cnpjCPF = "123456789",
-                emailPrincipal = "teste1",
-                emailSecundario = "teste1",
-                endereco = "teste1",
-                enderecoBairro = "teste1",
-                enderecoCodMunicipio = 1,
-                enderecoComplemento = "teste1",
-                enderecoNumero = 1,
-                inscrestadual = "teste1"
-            ),
-            Client(
-                id = 2,
-                razaoSocial = "teste2",
-                cnpjCPF = "123456789",
-                emailPrincipal = "teste2",
-                emailSecundario = "teste2",
-                endereco = "teste2",
-                enderecoBairro = "teste2",
-                enderecoCodMunicipio = 1,
-                enderecoComplemento = "teste2",
-                enderecoNumero = 1,
-                inscrestadual = "teste2"
-            ),
-            Client(
-                id = 3,
-                razaoSocial = "teste3",
-                cnpjCPF = "123456789",
-                emailPrincipal = "teste3",
-                emailSecundario = "teste3",
-                endereco = "teste3",
-                enderecoBairro = "teste3",
-                enderecoCodMunicipio = 1,
-                enderecoComplemento = "teste3",
-                enderecoNumero = 1,
-                inscrestadual = "teste3"
-            )
-        )
+        viewModel.uiStateClientList.observe(requireActivity()) { uiStateClientList ->
+            uiStateManager(uiStateClientList)
+        }
 
-        clientListAdapter.setList(clientList)
-        clientListAdapter.notifyDataSetChanged()
+    }
 
+    private fun uiStateManager(uiState: UIState) {
+        when (uiState) {
+            is UIState.Success -> dismissLoading()
+            is UIState.Loading -> setLoading()
+            is UIState.UpdatedDB -> updatedDB()
+            else -> {}
+        }
+    }
+
+    private fun updatedDB(){
+        viewModel.getAllClients()
+    }
+    private fun setLoading() {
+        binding.loading.visible()
+    }
+
+    private fun dismissLoading() {
+        binding.loading.gone()
     }
 }

@@ -10,13 +10,13 @@ import com.spectrotech.testeguarani.data.model.Client
 @Dao
 interface ClientDao {
 
-    @Upsert()
+    @Upsert
     suspend fun upsertClient(client: Client)
 
     @Delete
     suspend fun deleteClient(client: Client)
 
     @Query("SELECT * FROM GUA_CLIENTES")
-    fun getAllClients(): LiveData<List<Client>>
+    suspend fun getAllClients(): List<Client>
 
 }

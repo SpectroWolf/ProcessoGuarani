@@ -2,7 +2,9 @@ package com.spectrotech.testeguarani.di
 
 import android.content.Context
 import androidx.room.Room
+import com.spectrotech.testeguarani.data.localDataSource.ClientDao
 import com.spectrotech.testeguarani.data.localDataSource.ClientDataBase
+import com.spectrotech.testeguarani.data.repository.ClientRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -18,14 +20,18 @@ object DatabaseModule {
     @Provides
     fun provideDataBase(
         @ApplicationContext context: Context
-    ) = Room.databaseBuilder(
+    ) : ClientDataBase = Room.databaseBuilder(
         context,
         ClientDataBase::class.java,
-        "bancomovel"
+        "local_db_client"
     ).createFromAsset("database/bancomovel.db").build()
 
     @Singleton
     @Provides
-    fun provideDao(dataBase: ClientDataBase) = dataBase.clientDao()
+    fun provideDao(dataBase: ClientDataBase) : ClientDao = dataBase.clientDao()
+
+    @Provides
+    @Singleton
+    fun provideClientRepository(dao: ClientDao) : ClientRepository = ClientRepository(dao)
 
 }

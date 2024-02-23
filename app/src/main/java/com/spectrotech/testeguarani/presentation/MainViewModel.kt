@@ -13,14 +13,42 @@ import javax.inject.Inject
 @HiltViewModel
 class MainViewModel @Inject constructor(
     private val clientRepository: ClientRepository
-) : ViewModel(){
+) : BaseViewModel<UIState>(){
 
-    private val _clientList: MutableLiveData<Client> = MutableLiveData()
-    val clientList: LiveData<Client> = _clientList
+    private val _clientList: MutableLiveData<List<Client>> = MutableLiveData()
+    val clientList: LiveData<List<Client>> = _clientList
 
     fun getAllClients(){
+
+        uiStateClientList.value = UIState.Loading
+
         viewModelScope.launch {
             _clientList.value = clientRepository.getAllClients()
+
+            uiStateClientList.postValue(UIState.Success)
+        }
+
+    }
+
+    fun upsertClient(client: Client){
+
+        uiStateClientList.value = UIState.Loading
+
+        viewModelScope.launch {
+            clientRepository.upsertClient(client)
+
+            uiStateClientList.postValue(UIState.UpdatedDB)
+        }
+    }
+
+    fun deleteClient(client: Client){
+
+        uiStateClientList.value = UIState.Loading
+
+        viewModelScope.launch {
+            clientRepository.deleteClient(client)
+
+            uiStateClientList.postValue(UIState.UpdatedDB)
         }
     }
 

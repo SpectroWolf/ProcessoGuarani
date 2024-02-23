@@ -7,8 +7,8 @@ import com.spectrotech.testeguarani.databinding.RvClientItemBinding
 import com.spectrotech.testeguarani.data.model.Client
 
 class ClientListAdapter(
-    private val editClient: (Long) -> Unit,
-    private val deleteClient: (Long) -> Unit
+    private val editClient: (Client) -> Unit,
+    private val deleteClient: (Client) -> Unit
 ) : RecyclerView.Adapter<ClientListAdapter.MyViewHolder>() {
 
     var clientList = ArrayList<Client>()
@@ -22,19 +22,19 @@ class ClientListAdapter(
 
         fun bindList(
             client: Client,
-            editClient: (Long) -> Unit,
-            deleteClient: (Long) -> Unit
+            editClient: (Client) -> Unit,
+            deleteClient: (Client) -> Unit
         ) {
-            binding.tvClientItemName.text = client.razaoSocial
-            binding.tvClientItemCpf.text = client.cnpjCPF
-            binding.tvClientItemEmail.text = client.emailPrincipal
+            binding.tvClientItemName.text = client.CLI_RAZAOSOCIAL
+            binding.tvClientItemCpf.text = client.CLI_CGCCPF
+            binding.tvClientItemEmail.text = client.CLI_EMAIL
 
             binding.iconClientItemEdit.setOnClickListener {
-                editClient(client.id)
+                editClient(client)
             }
 
             binding.iconClientItemDelete.setOnClickListener {
-                deleteClient(client.id)
+                deleteClient(client)
             }
         }
     }

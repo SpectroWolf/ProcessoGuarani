@@ -1,6 +1,7 @@
 package com.spectrotech.testeguarani.di
 
 import com.spectrotech.testeguarani.data.localDataSource.ClientDao
+import com.spectrotech.testeguarani.data.repository.ClientRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
